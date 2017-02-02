@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+TypeError: Object #<Object> has no method 'endianness'
+    at Object.<anonymous> (C:\inetpub\wwwroot\App1_App2\www\app\node_modules\mongoose\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\shared.js:18:61)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Module.require (module.js:362:17)
+    at require (module.js:378:17)
+    at Object.<anonymous> (C:\inetpub\wwwroot\App1_App2\www\app\node_modules\mongoose\node_modules\mongodb\node_modules\mongodb-core\lib\connection\pool.js:11:12)
+    at Module._compile (module.js:449:26)
+    at Object.Module._extensions..js (module.js:467:10)

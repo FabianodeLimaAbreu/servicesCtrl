@@ -1,0 +1,21 @@
+{
+  "name": "servicesCtrl",
+  "version": "1.0.0",
+  "description": "Services Control - Focus Têxtil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fabiano de Lima",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "3.4.3",
+    "express-load": "^1.1.15",
+    "mongoose": "^4.7.7",
+    "node-static": "*",
+    "socket.io": "~0.9.16",
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0"
+  }
+}
