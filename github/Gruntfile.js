@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       //Copy all the files, except that
       build:{
         //The line bellow can be changed accordding to the project
-        src:['**','!node_modules/**','!**/Gruntfile.js','!**/package.json','!servicesCtrl/**',"!docs/**"],
+        src:['**','!**/Gruntfile.js','!**/package.json','!servicesCtrl/**',"!docs/**"],
         dest:'dist',
         expand:true
       },
@@ -58,6 +58,6 @@ module.exports = function(grunt) {
     //Clean and call the minifier task
     'build',
     'To deploy',
-    ['clean:build','copy:build','minifier']
+    ['clean:build','copy:build']
   );
 };
