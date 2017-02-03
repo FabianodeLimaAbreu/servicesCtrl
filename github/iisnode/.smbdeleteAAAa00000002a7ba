@@ -1,0 +1,12 @@
+Application has thrown an uncaught exception and is terminated:
+ReferenceError: app is not defined
+    at Object.<anonymous> (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\index.js:9:1)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+    at Function.Module._load (module.js:438:3)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at Object.<anonymous> (C:\Program Files\iisnode\interceptor.js:210:1)
+    at Module._compile (module.js:570:32)

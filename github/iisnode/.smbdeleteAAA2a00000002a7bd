@@ -1,0 +1,18 @@
+Application has thrown an uncaught exception and is terminated:
+Error: .get() requires callback functions but got a [object Undefined]
+    at C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express\lib\router\index.js:290:11
+    at Array.forEach (native)
+    at Router.route (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express\lib\router\index.js:286:13)
+    at Router.(anonymous function) [as get] (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express\lib\router\index.js:308:16)
+    at Function.app.(anonymous function) [as get] (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express\lib\application.js:412:26)
+    at Object.module.exports (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\routes\qrapp.js:3:6)
+    at C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express-load\lib\express-load.js:247:19
+    at iterate (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\async\lib\async.js:131:13)
+    at C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\async\lib\async.js:142:25
+    at C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express-load\lib\express-load.js:263:7
+    at iterate (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\async\lib\async.js:131:13)
+    at C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\async\lib\async.js:142:25
+    at C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express-load\lib\express-load.js:263:7
+    at iterate (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\async\lib\async.js:131:13)
+    at Object.async.eachSeries (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\async\lib\async.js:147:9)
+    at ExpressLoad.into (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\node_modules\express-load\lib\express-load.js:230:9)

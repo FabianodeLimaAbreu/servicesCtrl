@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"II3-11184-stderr-1486064525072.txt","computername":"II3","pid":11184,"type":"stderr","created":1486064525072},{"file":"II3-11436-stderr-1486064464598.txt","computername":"II3","pid":11436,"type":"stderr","created":1486064464598},{"file":"II3-11688-stderr-1486118950933.txt","computername":"II3","pid":11688,"type":"stderr","created":1486118950933},{"file":"II3-11816-stderr-1486118896853.txt","computername":"II3","pid":11816,"type":"stderr","created":1486118896853},{"file":"II3-11988-stderr-1486119245050.txt","computername":"II3","pid":11988,"type":"stderr","created":1486119245050},{"file":"II3-1832-stderr-1486118891632.txt","computername":"II3","pid":1832,"type":"stderr","created":1486118891632},{"file":"II3-2348-stderr-1486118924269.txt","computername":"II3","pid":2348,"type":"stderr","created":1486118924269},{"file":"II3-2748-stderr-1486065721115.txt","computername":"II3","pid":2748,"type":"stderr","created":1486065721115},{"file":"II3-4880-stderr-1486118962314.txt","computername":"II3","pid":4880,"type":"stderr","created":1486118962314},{"file":"II3-4892-stderr-1486118933130.txt","computername":"II3","pid":4892,"type":"stderr","created":1486118933130},{"file":"II3-5480-stderr-1486064427100.txt","computername":"II3","pid":5480,"type":"stderr","created":1486064427100},{"file":"II3-5560-stderr-1486064448709.txt","computername":"II3","pid":5560,"type":"stderr","created":1486064448709},{"file":"II3-6316-stderr-1486118846089.txt","computername":"II3","pid":6316,"type":"stderr","created":1486118846089},{"file":"II3-6512-stderr-1486064492582.txt","computername":"II3","pid":6512,"type":"stderr","created":1486064492582},{"file":"II3-6640-stderr-1486118957880.txt","computername":"II3","pid":6640,"type":"stderr","created":1486118957880},{"file":"II3-7084-stderr-1486064410560.txt","computername":"II3","pid":7084,"type":"stderr","created":1486064410560},{"file":"II3-8236-stderr-1486119242009.txt","computername":"II3","pid":8236,"type":"stderr","created":1486119242009},{"file":"II3-8300-stderr-1486065749006.txt","computername":"II3","pid":8300,"type":"stderr","created":1486065749006},{"file":"II3-8372-stderr-1486064440215.txt","computername":"II3","pid":8372,"type":"stderr","created":1486064440215},{"file":"II3-8636-stderr-1486118885108.txt","computername":"II3","pid":8636,"type":"stderr","created":1486118885108},{"file":"II3-9336-stderr-1486064453675.txt","computername":"II3","pid":9336,"type":"stderr","created":1486064453675}];
+        var lastUpdated = 1486119246255;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>
