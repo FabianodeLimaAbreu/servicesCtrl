@@ -171,7 +171,7 @@ module.exports=function(app){
 		* This method find a user by id passed as param
 		*This method return the find user itself.
 		*/
-		findById: function(req, res) {
+		findUserById: function(req, res) {
 		    User.find({
 		        id: req.params.id
 		    }, function(err, user) {
@@ -215,3 +215,16 @@ module.exports=function(app){
 	return HomeController;
 };
 
+function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+};
+
+function generateUserXId(){
+    return Math.floor(Math.random() * (9999 - 1000)) + 1000;
+}
