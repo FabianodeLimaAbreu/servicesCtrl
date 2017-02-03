@@ -1,6 +1,6 @@
 Application has thrown an uncaught exception and is terminated:
-ReferenceError: routes is not defined
-    at Object.<anonymous> (C:\inetpub\wwwroot\App1_App2\www\servicesctrl\index.js:12:36)
+ReferenceError: app is not defined
+    at Object.<anonymous> (C:\inetpub\wwwroot\App1_App2\www\servicesctrl_dev\index.js:9:1)
     at Module._compile (module.js:570:32)
     at Object.Module._extensions..js (module.js:579:10)
     at Module.load (module.js:487:32)
