@@ -11,10 +11,6 @@ var express=require("express")
 	,cors=require("cors")
 ;
 
-//global.db=mongoose.connect("mongodb://localhost/app");
-
-//var mongoose=require("mongoose");
-// mongoose.connect("mongodb://189.126.197.169/app");
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(bodyParser.urlencoded({ 'extended': 'true' })); // parse application/x-www-form-urlencoded
@@ -28,6 +24,5 @@ load("models")
 	.then("routes")
 	.into(app);
 
-//app.get("/node/servicesctrl_dev/teste",qrapp.teste);
 
 app.listen(process.env.PORT);	

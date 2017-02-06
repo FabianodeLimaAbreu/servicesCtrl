@@ -202,6 +202,19 @@ module.exports=function(app){
 		        res.send(true);
 		    });
 		},
+		/**
+		* Remove All Documents of User Collection
+		* This method remove all documents from collection
+		* This method return true / false.
+		*/
+		removeAll: function(req, res) {
+		    User.remove({}, function(err, user) {
+		        if (err)
+		            res.send(err);
+
+		        res.send(true);
+		    });
+		},
 		//res.setHeader('Content-Type', 'application/json');
 		//
 		data: function(request, response) {
