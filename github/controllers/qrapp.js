@@ -5,8 +5,7 @@
 *
 */
 
-var mongoose=require("mongoose");
-mongoose.connect("mongodb://localhost/app_dev");
+var mongoose=require("../config.js");
 
 module.exports=function(app){
 	var User=app.models.user;
