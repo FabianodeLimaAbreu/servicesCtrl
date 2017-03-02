@@ -42,15 +42,18 @@ module.exports=function(app){
 		    // create a User, information comes from AJAX request from Angular
 		    /*
 		    {
-		        "id":66266,
-		        "device":"android",
-		        "mail":true,
-		        "material":{
-		            "id":"TESTE10",
-		            "qr":false,
-		            "fav":true
-		        }
-		    }
+			    "id":"11113",
+			    "name":"Fabiano",
+				"email":"teste@teste.com.br",
+				"ddd":11,
+				"tel":"96622-5892",
+				"from":{
+							"where":"interior",
+							"comp":"Sorocaba"
+					
+						},
+				"transport":"aviao"
+			}
 		    */
 		    var _id=req.body.id;
 		    var material=req.body.material;
@@ -238,8 +241,12 @@ module.exports=function(app){
 		data: function(request, response) {
 		    response.setHeader('Content-Type', 'application/json');
 		    // response.send(materials);
-		}
+		}/*,
 
+		crypto: function(request, response) {
+		    teste.encrypt()
+		}
+*/
 
 
 	}

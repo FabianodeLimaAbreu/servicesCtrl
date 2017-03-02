@@ -9,4 +9,6 @@ module.exports = function(app){
 	app.post('/node/servicesctrl_dev/remove',qrapp.remove);
 	app.get('/node/servicesctrl_dev/data',qrapp.data);
 	app.get('/node/servicesctrl_dev/removeall',qrapp.removeAll);
+
+	//app.get('/node/servicesctrl_dev/crypto',qrapp.crypto);
 }
