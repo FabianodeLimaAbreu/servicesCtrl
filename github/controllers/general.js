@@ -29,6 +29,7 @@ module.exports=function(app){
 		* @param {String} email - Repre's email
 		* @param {int} ddd - Repre's ddd phone number
 		* @param {String} tel - Repre's phone number as String format
+		* @param {String} repre - Representation's name
 		* @param {Object} from - Where repre comes from...
 		* @param {String} transport - Repre's transport type (plane, bus, car)
 		* This method receive params as post and look for this id in database, if it isn`t exist, create a new one and return it
@@ -42,6 +43,7 @@ module.exports=function(app){
 			    "name":"Fabiano",
 				"email":"teste@teste.com.br",
 				"ddd":11,
+				"repre":"Teste",
 				"tel":"96622-5892",
 				"from" : {
 							"where":"interior",
@@ -63,6 +65,7 @@ module.exports=function(app){
 					    email: req.body.email,
 					    ddd: req.body.ddd,
 					    tel: req.body.tel,
+					    repre: req.body.repre,
 					    from: req.body.from,
 					    transport: req.body.transport
 		            },function(err,repre){
