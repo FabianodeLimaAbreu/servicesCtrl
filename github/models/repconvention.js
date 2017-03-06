@@ -2,7 +2,7 @@ var mongoose=require("mongoose");
 
 module.exports=function(app){
 	var Repreconvention_Repre = mongoose.model('Repreconvention_Repre', {
-	    id: { type: Number, max: 99999, required: true, unique: true },
+	    id: { type: Number, required: true, unique: true },
 	    name: { type: String, required: true },
 	    email: { type: String, required: true },
 	    ddd: { type: Number, required: true },

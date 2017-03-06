@@ -56,7 +56,10 @@ module.exports=function(app){
 		    var _id=req.body.id;
 		    Repreconvention_Repre.findOne({id:_id},function(err,repre){
 		        if(repre){
-		            res.json(repre);
+		        	var ret={
+					    "id":"0"
+					}
+		            res.json(ret);
 		        }
 		        else{
 		            Repreconvention_Repre.create({
