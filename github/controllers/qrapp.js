@@ -34,6 +34,7 @@ module.exports=function(app){
 		* @param {Int} id - id of user
 		* @param {String} device - device been used by user
 		* @param {boolean} mail - if user has email
+		* @param {Object} material - a list of materials if it exists
 		* This method receive threee params. Use the id to return a user in the base or create a new user with this id and return it, add the device value in an attribute, and the mail also.
 		* This method can receive "material's list" (OPTIONAL), in this case, it will add material to an user that has been created.
 		* If recieve "X" in :id param, generate a random id starting by 6
@@ -42,18 +43,15 @@ module.exports=function(app){
 		    // create a User, information comes from AJAX request from Angular
 		    /*
 		    {
-			    "id":"11113",
-			    "name":"Fabiano",
-				"email":"teste@teste.com.br",
-				"ddd":11,
-				"tel":"96622-5892",
-				"from":{
-							"where":"interior",
-							"comp":"Sorocaba"
-					
-						},
-				"transport":"aviao"
-			}
+ +		        "id":66266,
+ +		        "device":"android",
+ +		        "mail":true,
+ +		        "material":{
+ +		            "id":"TESTE10",
+ +		            "qr":false,
+ +		            "fav":true
+ +		        }
+ +		    }
 		    */
 		    var _id=req.body.id;
 		    var material=req.body.material;
