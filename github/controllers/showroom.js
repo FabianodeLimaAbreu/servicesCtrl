@@ -138,6 +138,7 @@ module.exports=function(app){
 		/**
 		* ListLoan Method GET
 		* @memberOf ShowRoom#
+		* @param {Object} res - Response
 		* Return a list of loans from database
 		*/
 		listLoan:function(req,res){
@@ -232,6 +233,13 @@ module.exports=function(app){
 
 
 		// IMAGES
+		/**
+		* uploadImage Method POST
+		* @memberOf ShowRoom#
+		* @param {Object} req - is one of the basic methods computers use to communicate with each other. This method use req.file to access file that has been uploaded.
+		* This method receive a file and save it in a specific folder in a specific format
+		* @returns {Object} json - Return true or false to indicate error, and a String message .
+		*/
 		uploadImage:function(req,res){
 			sharp(req.file.buffer)
 	        .resize(800)
@@ -244,13 +252,29 @@ module.exports=function(app){
 	            return res.json({ errors: false, message: "Succeeded"});
 	        });
 		},
+
+		/**
+		* uploadsFile Method POST
+		* @memberOf ShowRoom#
+		* @param {Object} req - is one of the basic methods computers use to communicate with each other. This method use req.params.file to access file that has been uploaded.
+		* Receive a image name as param and find it in a specific folder and return it.
+		* @returns {File} img - Return the img itself .
+		*/
 		uploadsFile:function(req,res){
-			//http://189.126.197.169/node/servicesctrl_dev/showroom/uploads/ok.jpg
+			//http://189.126.197.169/node/servicesctrl_dev/showroom/uploads/ 	
 			file = req.params.file;
 		    var img = fs.readFileSync("./uploads/" + file);
 		    res.writeHead(200, { 'Content-Type': 'image/jpg' });
 		    res.end(img, 'binary');
 		},
+
+		/**
+		* uploads Method POST
+		* @memberOf ShowRoom#
+		* @param {Object} res - Response
+		* This method read a specific folder and return a list of files' name.
+		* @returns {Object} json - A list of files' name.
+		*/
 		uploads:function(req,res){
 			fs.readdir("./uploads", function(err, files) {
 		        if (err) {
@@ -260,6 +284,14 @@ module.exports=function(app){
 		        res.json(files);
 		    });
 		},
+
+		/**
+		* deleteImg Method POST
+		* @memberOf ShowRoom#
+		* @param {String} url - image's name
+		* This method receive a image's name and look for it in a specific folder and then remove it.
+		* @returns {Object} json - A return of this action.
+		*/
 		deleteImg:function(req,res){
 			/*
 				{
@@ -281,6 +313,14 @@ module.exports=function(app){
 		        return res.json({ errors: false, message: "Succeeded"});
 		    });
 		},
+
+		/**
+		* deleteAllImg Method POST
+		* @memberOf ShowRoom#
+		* @param {Array} list - A list of image's name to be removed.
+		* This method receive a list of image's name , pass each of them and remove.
+		* @returns {Object} json - Return true or false to indicate error, and a String message .
+		*/
 		deleteAllImg:function(req,res){
 			/*
 				{

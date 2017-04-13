@@ -223,6 +223,7 @@ module.exports=function(app){
 		/**
 		* Remove All Documents of User Collection
 		* @memberOf QrAppController#
+		* @param {Object} res - Response
 		* This method remove all documents from collection
 		* This method return true / false.
 		*/

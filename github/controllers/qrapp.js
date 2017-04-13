@@ -198,6 +198,7 @@ module.exports=function(app){
 		        res.json(user);
 		    });
 		},
+		
 		/**
 		* Remove User Method POST
 		* @memberOf QrAppController#
@@ -220,9 +221,11 @@ module.exports=function(app){
 		        res.send(true);
 		    });
 		},
+
 		/**
 		* Remove All Documents of User Collection
 		* @memberOf QrAppController#
+		* @param {Object} res - Response
 		* This method remove all documents from collection
 		* This method return true / false.
 		*/
