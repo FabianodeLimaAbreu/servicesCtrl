@@ -11,4 +11,13 @@ module.exports = function(app){
 	app.post("/node/servicesctrl_dev/focusconnect/addnav",app.controllers.general.focusConnectInsertAddNavigation);
 	app.post("/node/servicesctrl_dev/focusconnect/remove",app.controllers.general.focusConnectRemove);
 	app.get("/node/servicesctrl_dev/focusconnect/removeall",app.controllers.general.focusConnectRemoveAll);
+
+	//Criciuma Event
+	app.get("/node/servicesctrl_dev/cri_event/teste",app.controllers.general.testecri);
+	app.post("/node/servicesctrl_dev/cri_event/insert",app.controllers.general.criEvent2017Insert);
+	app.get("/node/servicesctrl_dev/cri_event/list",app.controllers.general.criEvent2017List);
+	app.get('/node/servicesctrl_dev/cri_event/find/:id',app.controllers.general.criEvent2017FindUserById);
+	app.post("/node/servicesctrl_dev/cri_event/remove",app.controllers.general.criEvent2017Remove);
+	app.get("/node/servicesctrl_dev/cri_event/removeall",app.controllers.general.criEvent2017RemoveAll);
+
 }
