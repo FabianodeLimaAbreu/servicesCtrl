@@ -219,24 +219,20 @@ module.exports=function(app){
 		},
 
 		/**
-		* InsertIten Method POST
-		* @memberOf ShowRoom#
-		* @param {Int} id - id of Item
-		* @param {String} origin - Where item is
-		* @param {String} area - Department
-		* @param {String} label - Label itself
-		* @param {String} Owner - Owner itself
-		* @param {String} Season - Season it belongs
-		* @param {String} Status - Status right now
-		* @param {Object} images - a list of images if it exists
-		* @param {Object} material - a list of materials if it exists
-		* This method use findOneAndUpdate, then it the item exists update it and return it.
-		* This method can receive "material's list" and "image's list" (OPTIONAL), in this case, it will add a list to item when it is created or updated.
+		* criEvent2017Insert Method POST
+		* @memberOf GeneralController#
+		* @param {Int} cnpj - Client's cpnj
+		* @param {String} name - Client's name
+		* @param {String} cargo - Cargo (Department)
+		* @param {String} email - Client's email
+		* @param {Array Object} segments - Client's action segments (select by client): segments.segtype and segments.segval.
+		* @param {Array Object} participants - max 3. Same values as Client.
+		* This method can receive "participants's list" (OPTIONAL), in this case, it will add a list of participants to client when it is created.
 		*/
 		criEvent2017Insert:function(req,res){
 			/*
 				{
-					"id": 423443342,
+					"cnpj": 41829933300,
 				    "name": "Origin",
 				    "cargo": "masculino",
 				    "email": "item inserindo",
@@ -286,7 +282,7 @@ module.exports=function(app){
 			*/
 
 		    CriEvent_User.create({
-		    	id: req.body.id,
+		    	cnpj: req.body.cnpj,
 		        name: req.body.name,
 		        cargo: req.body.cargo,
 		        email: req.body.email,
@@ -302,36 +298,36 @@ module.exports=function(app){
 		
 		criEvent2017List:function(req,res){
 			//http://189.126.197.169/node/servicesctrl_dev/cri_event/list
-			CriEvent_User.find().sort({"date": 'desc'}).exec(function(err, user) {
+			CriEvent_User.find().sort({"date": 'desc'}).exec(function(err, client) {
 		        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
 		        if (err)
 		            res.send(err)
 
-		        res.json(user); // return all repres in JSON format 
+		        res.json(client); // return all repres in JSON format 
 		    });
 		},
 
 		/**
-		* Find User Method POST
+		* Find Client Method POST
 		* @memberOf QrAppController#
-		* @param {Int} id - id of user
-		* This method find a user by id passed as param
-		*This method return the find user itself.
+		* @param {Int} cnpj - Client's cnpj
+		* This method find a client by cnpj passed as param
+		*This method return the find client itself.
 		*/
-		criEvent2017FindUserById: function(req, res) {
-			//http://189.126.197.169/node/servicesctrl_dev/cri_event/find/:id
+		criEvent2017FindUserByCnpj: function(req, res) {
+			//http://189.126.197.169/node/servicesctrl_dev/cri_event/find/:cnpj
 		    CriEvent_User.find({
-		        id: req.params.id
-		    }, function(err, user) {
+		        cnpj: req.params.cnpj
+		    }, function(err, client) {
 		        if (err)
 		            res.send(err);
 
-		        res.json(user);
+		        res.json(client);
 		    });
 		},
 
 		/**
-		* Remove All Documents of User Collection
+		* Remove All Documents of Client Collection
 		* @memberOf GeneralController#
 		* @param {Object} res - Response
 		* This method remove all documents from collection
@@ -339,7 +335,7 @@ module.exports=function(app){
 		*/
 		criEvent2017RemoveAll: function(req, res) {
 			//http://189.126.197.169/node/servicesctrl_dev/cri_event/removeall
-		    CriEvent_User.remove({}, function(err, user) {
+		    CriEvent_User.remove({}, function(err, client) {
 		        if (err)
 		            res.send(err);
 
@@ -349,22 +345,22 @@ module.exports=function(app){
 
 
 		/**
-		* Remove User Method POST
+		* Remove Client Method POST
 		* @memberOf GeneralController#
 		* @param {String} name - name of user
-		* This method find a user by name passed as param and remove it all
+		* This method find a client by name passed as param and remove it all
 		* This method return true / false.
 		*/
 		criEvent2017Remove: function(req, res) {
 		//http://189.126.197.169/node/servicesctrl_dev/cri_event/remove
 		/*
 		{
-		    "id":321321
+		    "cnpj":321321
 		}
 		*/
 		    CriEvent_User.remove({
-		        id: req.body.id
-		    }, function(err, user) {
+		        cnpj: req.body.cnpj
+		    }, function(err, client) {
 		        if (err)
 		            res.send(err);
 
