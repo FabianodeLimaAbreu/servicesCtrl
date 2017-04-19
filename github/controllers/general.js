@@ -221,7 +221,7 @@ module.exports=function(app){
 		/**
 		* criEvent2017Insert Method POST
 		* @memberOf GeneralController#
-		* @param {Int} cnpj - Client's cpnj
+		* @param {Int} cod - Client's cpnj
 		* @param {String} name - Client's name
 		* @param {String} cargo - Cargo (Department)
 		* @param {String} email - Client's email
@@ -232,7 +232,8 @@ module.exports=function(app){
 		criEvent2017Insert:function(req,res){
 			/*
 				{
-					"cnpj": 41829933300,
+					"cod": 41829933300,
+					"codigo": 41829933300,
 				    "name": "Origin",
 				    "cargo": "masculino",
 				    "email": "item inserindo",
@@ -282,7 +283,8 @@ module.exports=function(app){
 			*/
 
 		    CriEvent_User.create({
-		    	cnpj: req.body.cnpj,
+		    	cod: req.body.cod,
+		    	codigo: req.body.codigo,
 		        name: req.body.name,
 		        cargo: req.body.cargo,
 		        email: req.body.email,
@@ -310,14 +312,14 @@ module.exports=function(app){
 		/**
 		* Find Client Method POST
 		* @memberOf QrAppController#
-		* @param {Int} cnpj - Client's cnpj
-		* This method find a client by cnpj passed as param
+		* @param {Int} cod - Client's cod
+		* This method find a client by cod passed as param
 		*This method return the find client itself.
 		*/
-		criEvent2017FindUserByCnpj: function(req, res) {
-			//http://189.126.197.169/node/servicesctrl_dev/cri_event/find/:cnpj
+		criEvent2017FindUserByCod: function(req, res) {
+			//http://189.126.197.169/node/servicesctrl_dev/cri_event/find/:cod
 		    CriEvent_User.find({
-		        cnpj: req.params.cnpj
+		        cod: req.params.cod
 		    }, function(err, client) {
 		        if (err)
 		            res.send(err);
@@ -355,16 +357,16 @@ module.exports=function(app){
 		//http://189.126.197.169/node/servicesctrl_dev/cri_event/remove
 		/*
 		{
-		    "cnpj":321321
+		    "cod":321321
 		}
 		*/
 		    CriEvent_User.remove({
-		        cnpj: req.body.cnpj
+		        cod: req.body.cod
 		    }, function(err, client) {
 		        if (err)
 		            res.send(err);
 
-		        res.send(true);
+		        res.send(client);
 		    });
 		},
 

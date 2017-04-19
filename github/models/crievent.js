@@ -2,7 +2,8 @@ var mongoose=require("mongoose");
 
 module.exports=function(app){
 	var CriEvent_User = mongoose.model('CriEvent_User', {
-		cnpj: { type: Number, max: 99999999999, required: true, unique: true },
+		cod: { type: Number, max: 99999999999, required: true, unique: true },
+		codigo: { type: Number, max: 99999999999, required: true, unique: true },  //
 	    name: { type: String, required: true },
 	    cargo:{ type: String, required: true },
 	    email:{ type: String, required: true },

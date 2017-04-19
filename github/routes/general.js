@@ -16,7 +16,7 @@ module.exports = function(app){
 	app.get("/node/servicesctrl_dev/cri_event/teste",app.controllers.general.testecri);
 	app.post("/node/servicesctrl_dev/cri_event/insert",app.controllers.general.criEvent2017Insert);
 	app.get("/node/servicesctrl_dev/cri_event/list",app.controllers.general.criEvent2017List);
-	app.get('/node/servicesctrl_dev/cri_event/find/:cnpj',app.controllers.general.criEvent2017FindUserByCnpj);
+	app.get('/node/servicesctrl_dev/cri_event/find/:cod',app.controllers.general.criEvent2017FindUserByCod);
 	app.post("/node/servicesctrl_dev/cri_event/remove",app.controllers.general.criEvent2017Remove);
 	app.get("/node/servicesctrl_dev/cri_event/removeall",app.controllers.general.criEvent2017RemoveAll);
 
