@@ -234,6 +234,7 @@ module.exports=function(app){
 				{
 					"cod": 41829933300,
 					"codigo": 41829933300,
+					"razao": "Pernambucanas",
 				    "name": "Origin",
 				    "cargo": "masculino",
 				    "email": "item inserindo",
@@ -249,6 +250,8 @@ module.exports=function(app){
 					],
 					"participants": [
 					    {
+					    	"pcodigo": 41829933300,
+							"prazao": "Pernambucanas",
 					        "pname": "Origin1",
 						    "pcargo": "masculino1",
 						    "pemail": "item inserindo1",
@@ -264,6 +267,8 @@ module.exports=function(app){
 							]
 					    },
 						{
+							"pcodigo": 41829933300,
+							"prazao": "Pernambucanas",
 					        "pname": "Origin2",
 						    "pcargo": "masculino2",
 						    "pemail": "item inserindo2",
@@ -285,6 +290,7 @@ module.exports=function(app){
 		    CriEvent_User.create({
 		    	cod: req.body.cod,
 		    	codigo: req.body.codigo,
+		    	razao: req.body.razao,
 		        name: req.body.name,
 		        cargo: req.body.cargo,
 		        email: req.body.email,
