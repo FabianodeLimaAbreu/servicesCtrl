@@ -224,6 +224,7 @@ module.exports=function(app){
 		* @param {Int} cod - Client's cpnj
 		* @param {String} name - Client's name
 		* @param {String} cargo - Cargo (Department)
+		* @param {String} representante - Representant (Department)
 		* @param {String} email - Client's email
 		* @param {Array Object} segments - Client's action segments (select by client): segments.segtype and segments.segval.
 		* @param {Array Object} participants - max 3. Same values as Client.
@@ -232,9 +233,10 @@ module.exports=function(app){
 		criEvent2017Insert:function(req,res){
 			/*
 				{
-					"cod": 41829933300,
+					"cod": 4914211065,
 					"codigo": 41829933300,
 					"razao": "Pernambucanas",
+					"representante": "Representante",
 				    "name": "Origin",
 				    "cargo": "masculino",
 				    "email": "item inserindo",
@@ -291,6 +293,7 @@ module.exports=function(app){
 		    	cod: req.body.cod,
 		    	codigo: req.body.codigo,
 		    	razao: req.body.razao,
+		    	representante: req.body.representante,
 		        name: req.body.name,
 		        cargo: req.body.cargo,
 		        email: req.body.email,
