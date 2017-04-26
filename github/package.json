@@ -16,6 +16,19 @@
     "socket.io": "~0.9.16",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-copy": "~0.5.0"
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-crypt": "*",
+    "multer": "*",
+    "grunt-sharp":"*",
+    "fs":"*",
+    "url":"*",
+    "request":"*",
+    "express-load":"*",
+    "mongoose":"*",
+    "body-parser":"*",
+    "method-override":"*",
+    "cors":"*",
+    "grunt-contrib-watch":"*",
+    "grunt-jsdoc":"*"
   }
 }
