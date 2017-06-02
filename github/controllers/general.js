@@ -233,13 +233,13 @@ module.exports=function(app){
 		criEvent2017Insert:function(req,res){
 			/*
 				{
-					"cod": 4914211065,
-					"codigo": 41829933300,
-					"razao": "Pernambucanas",
-					"representante": "Representante",
-				    "name": "Origin",
+					"cod": 6605675826,
+					"codigo": 7777777777,
+					"razao": "Fabiano S.A",
+					"representante": "Fabiano de Lima",
+				    "name": "Fabiano",
 				    "cargo": "masculino",
-				    "email": "item inserindo",
+				    "email": "fabianoabreu@focustextil.com.br",
 				    "segments": [
 					    {
 					        "segtype":"select",
@@ -289,8 +289,10 @@ module.exports=function(app){
 				}
 			*/
 
-		    CriEvent_User.create({
-		    	cod: req.body.cod,
+			var query = { cod: req.body.cod },
+	        options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+		    CriEvent_User.findOneAndUpdate(query, {
 		    	codigo: req.body.codigo,
 		    	razao: req.body.razao,
 		    	representante: req.body.representante,
@@ -299,7 +301,7 @@ module.exports=function(app){
 		        email: req.body.email,
 		        segments: req.body.segments,
 		        participants: req.body.participants
-		    }, function(err, item) {
+		    }, options, function(err, item) {
 		        if (err)
 		            res.send(err);
 
