@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         expand:true
       },
       github:{
-        src:['**','!node_modules/**','!servicesCtrl/**','!dist/**','!uploads/**','!docs/**'],
+        src:['**','!node_modules/**','!servicesCtrl/**','!dist/**','!uploads/**','!attachments/**','!docs/**'],
         dest:'servicesCtrl/github',
         expand:true
       }

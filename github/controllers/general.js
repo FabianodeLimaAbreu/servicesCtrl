@@ -241,8 +241,8 @@ module.exports=function(app){
 		* @param {String} cargo - Cargo (Department)
 		* @param {String} representante - Representant (Department)
 		* @param {String} email - Client's email
-		* @param {Array Object} segments - Client's action segments (select by client): segments.segtype and segments.segval.
-		* @param {Array Object} participants - max 3. Same values as Client.
+		* @param {Array} segments - Client's action segments (select by client): segments.segtype and segments.segval.
+		* @param {Array} participants - max 3. Same values as Client.
 		* This method can receive "participants's list" (OPTIONAL), in this case, it will add a list of participants to client when it is created.
 		*/
 		criEvent2017Insert:function(req,res){
@@ -402,16 +402,17 @@ module.exports=function(app){
 		},
 
 		/**
-		* criEvent2017Insert Method POST
+		* designVisionsInsert Method POST
 		* @memberOf GeneralController#
-		* @param {Int} cod - Client's cpnj
-		* @param {String} name - Client's name
+		* @param {String} nome - User's nome
 		* @param {String} cargo - Cargo (Department)
-		* @param {String} representante - Representant (Department)
-		* @param {String} email - Client's email
-		* @param {Array Object} segments - Client's action segments (select by client): segments.segtype and segments.segval.
-		* @param {Array Object} participants - max 3. Same values as Client.
-		* This method can receive "participants's list" (OPTIONAL), in this case, it will add a list of participants to client when it is created.
+		* @param {Number} tel - dd + phone number
+		* @param {String} curso - User's curse
+		* @param {Int} semestre - Curse's actual semestre
+		* @param {String} email - User's email (unique value)
+		* @param {String} descr - User's text telling why wanna participate in this project
+		* @param {Array} midias - User's social midias' link (select by User): midias.mtype and midias.link.
+		* This method insert a new participant in our database.
 		*/
 		designVisionsInsert:function(req,res){
 			/*
@@ -469,7 +470,7 @@ module.exports=function(app){
 		},
 
 		/**
-		* Remove All Documents of User Collection
+		* Remove All Documents of Design Vision's Collection
 		* @memberOf GeneralController#
 		* @param {Object} res - Response
 		* This method remove all documents from collection
@@ -485,16 +486,16 @@ module.exports=function(app){
 		},
 
 		/**
-		* Remove User Method POST
+		* Remove Participant Method POST
 		* @memberOf GeneralController#
-		* @param {String} name - name of user
+		* @param {String} nome - name of user
 		* This method find a user by name passed as param and remove it all
 		* This method return true / false.
 		*/
 		designVisionsRemove: function(req, res) {
 			/*
 			{
-			    "name":"TIWEB"
+			    "nome":"TIWEB"
 			}
 			*/
 		    DesignVisions_User.remove({
