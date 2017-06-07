@@ -8,10 +8,20 @@
 
 var mongoose=require("../config.js");
 
+var multer = require('multer');
+var sharp = require('sharp');
+var fs = require('fs');
+
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage, limits: { fileSize: 1000 * 1000 * 2.5 } });
+
 module.exports=function(app){
 	var Repreconvention_Repre=app.models.repconvention;
 	var FocusConnectAcesso=app.models.focusconnectacesso;
 	var CriEvent_User=app.models.crievent;
+	var DesignVisions_User = app.models.designvisions;
+
+	var form = "<!DOCTYPE HTML><html><body>" +"<form method='post' id='uploadForm' action='/node/servicesctrl_dev/form_instituto/upload' enctype='multipart/form-data'>" +"<input type='text' name='name'/>" +"<input type='file' name='file'/>" +"<input type=submit value='Upload Image' name='submit'></form>" +"</body></html>";
 
 	/**
 	* Main application class, This class in a controllers of all funcionalities of general webServices.
@@ -19,6 +29,11 @@ module.exports=function(app){
 	* @constructor
 	*/
 	var GeneralController={
+		callForm:function(req,res){
+			res.writeHead(200, { 'Content-Type': 'text/html' });
+		    res.end(form);
+		},
+
 		teste:function(req,res){
 			res.send("Strings TESTE");
 		},
@@ -198,11 +213,11 @@ module.exports=function(app){
 		* This method return true / false.
 		*/
 		focusConnectRemove: function(req, res) {
-		/*
-		{
-		    "name":"TIWEB"
-		}
-		*/
+			/*
+			{
+			    "name":"TIWEB"
+			}
+			*/
 		    FocusConnectAcesso.remove({
 		        name: req.body.name
 		    }, function(err, acesso) {
@@ -365,12 +380,12 @@ module.exports=function(app){
 		* This method return true / false.
 		*/
 		criEvent2017Remove: function(req, res) {
-		//http://189.126.197.169/node/servicesctrl_dev/cri_event/remove
-		/*
-		{
-		    "cod":321321
-		}
-		*/
+			//http://189.126.197.169/node/servicesctrl_dev/cri_event/remove
+			/*
+			{
+			    "cod":321321
+			}
+			*/
 		    CriEvent_User.remove({
 		        cod: req.body.cod
 		    }, function(err, client) {
@@ -381,6 +396,136 @@ module.exports=function(app){
 		    });
 		},
 
+		//FORM INSTITUTO
+		testeDesignVisions:function(req,res){
+			res.send("Teste INSTITUTO");
+		},
+
+		/**
+		* criEvent2017Insert Method POST
+		* @memberOf GeneralController#
+		* @param {Int} cod - Client's cpnj
+		* @param {String} name - Client's name
+		* @param {String} cargo - Cargo (Department)
+		* @param {String} representante - Representant (Department)
+		* @param {String} email - Client's email
+		* @param {Array Object} segments - Client's action segments (select by client): segments.segtype and segments.segval.
+		* @param {Array Object} participants - max 3. Same values as Client.
+		* This method can receive "participants's list" (OPTIONAL), in this case, it will add a list of participants to client when it is created.
+		*/
+		designVisionsInsert:function(req,res){
+			/*
+				{
+					"razao": "Fabiano S.A",
+					"email": "fabianoabreu@focustextil.com.br",
+				    "nome": "Fabiano",
+				    "cargo": "masculino",
+				    "tel": 11966225892,
+			        "curso":"Sistemas de Informação",
+			        "semestre":8,
+			        "descr":"This method can receive 'participants's list' (OPTIONAL), in this case, it will add a list of participants to client when it is created.",
+			        "born_date":"2012/12/20",
+			        "midias": [
+					    {
+					        "mtype":"facebook",
+					        "link":"teste"
+					    },
+					    {
+					        "mtype":"twitter",
+					        "link":"link twitter"
+					    }
+					]
+				}
+			*/
+
+
+		    DesignVisions_User.create({
+		    	razao: req.body.razao,
+		        nome: req.body.nome,
+		        cargo: req.body.cargo,
+		        email: req.body.email,
+		        tel: req.body.tel,
+		        curso:req.body.curso,
+		        semestre:req.body.semestre,
+		        descr:req.body.descr,
+		        born_date:req.body.born_date, //YYYY/MM/DD
+		        midias: req.body.midias
+		    }, function(err, item) {
+		        if (err)
+		            res.send(err);
+
+		        res.json(item);
+		    });
+		},
+
+		designVisionsList:function(req,res){
+			DesignVisions_User.find(function(err, item) {
+		        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+		        if (err)
+		            res.send(err)
+
+		        res.json(item); // return all repres in JSON format 
+		    });
+		},
+
+		/**
+		* Remove All Documents of User Collection
+		* @memberOf GeneralController#
+		* @param {Object} res - Response
+		* This method remove all documents from collection
+			* This method return true / false.
+			*/
+		designVisionsRemoveAll: function(req, res) {
+		    DesignVisions_User.remove({}, function(err, acesso) {
+		        if (err)
+		            res.send(err);
+
+		        res.send(true);
+		    });
+		},
+
+		/**
+		* Remove User Method POST
+		* @memberOf GeneralController#
+		* @param {String} name - name of user
+		* This method find a user by name passed as param and remove it all
+		* This method return true / false.
+		*/
+		designVisionsRemove: function(req, res) {
+			/*
+			{
+			    "name":"TIWEB"
+			}
+			*/
+		    DesignVisions_User.remove({
+		        nome: req.body.nome
+		    }, function(err, acesso) {
+		        if (err)
+		            res.send(err);
+
+		        res.send(true);
+		    });
+		},
+
+		/**
+		* uploadImage Method POST
+		* @memberOf ShowRoom#
+		* @param {Object} req - is one of the basic methods computers use to communicate with each other. This method use req.file to access file that has been uploaded.
+		* This method receive a file and save it in a specific folder in a specific format
+		* @returns {Object} json - Return true or false to indicate error, and a String message .
+		*/
+		institutoForm2017UploadFile:function(req,res){
+			sharp(req.file.buffer)
+	        .resize(800)
+	        .background('white')
+	        .jpeg()
+	        .toFile('./attachments/' + req.body.name + '.jpg', function(err) {
+	            if (err) {
+	                return res.json({ errors: true, message: "Error uploading file."});
+	            }
+	            return res.json({ errors: false, message: "Succeeded"});
+	        });
+		}
 	};
 	return GeneralController;
 };
